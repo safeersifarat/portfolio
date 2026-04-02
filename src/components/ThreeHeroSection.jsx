@@ -11,12 +11,29 @@ function RetroComputer({ scrollProgress = 0, displayedRole }) {
     if (!groupRef.current) return;
 
     const p = scrollProgress;
+    const rotationProgress = Math.min(p / 0.55, 0.74);
 
-    groupRef.current.position.z = THREE.MathUtils.lerp(0, -20, p);
-    groupRef.current.position.y = THREE.MathUtils.lerp(-0.5, 0.4, p);
-    groupRef.current.rotation.x = THREE.MathUtils.lerp(0, 0.15, p);
-    groupRef.current.rotation.y = THREE.MathUtils.lerp(0, 1, p);
-    groupRef.current.rotation.z = THREE.MathUtils.lerp(0, 0.05, p);
+    groupRef.current.position.z = THREE.MathUtils.lerp(
+      0,
+      -20,
+      rotationProgress,
+    );
+    groupRef.current.position.y = THREE.MathUtils.lerp(
+      -0.5,
+      0.4,
+      rotationProgress,
+    );
+    groupRef.current.rotation.x = THREE.MathUtils.lerp(
+      0,
+      0.2,
+      rotationProgress,
+    );
+    groupRef.current.rotation.y = THREE.MathUtils.lerp(0, 1, rotationProgress);
+    groupRef.current.rotation.z = THREE.MathUtils.lerp(
+      0,
+      0.05,
+      rotationProgress,
+    );
   });
 
   return (
@@ -61,7 +78,9 @@ function RetroComputer({ scrollProgress = 0, displayedRole }) {
             <p className="mb-2 text-sm tracking-[0.35em] bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
               HI THERE,
             </p>
-            <h1 className="text-[2.75rem] leading-none mb-4 font-black">I'M SAFEER</h1>
+            <h1 className="text-[2.75rem] leading-none mb-4 font-black">
+              I'M SAFEER
+            </h1>
             <div className="text-lg text-gray-300 whitespace-nowrap">
               <span className="text-white">
                 I'm a{" "}
@@ -73,12 +92,22 @@ function RetroComputer({ scrollProgress = 0, displayedRole }) {
             </div>
           </div>
           <div className="flex justify-center items-center">
-            <div className="relative h-52 w-44 profile-blob border-[3px] border-cyan-400 flex items-center justify-center bg-gradient-to-br from-cyan-500/40 to-blue-600/40" style={{ boxShadow: '0 0 30px rgba(0,255,255,0.4), inset 0 0 20px rgba(0,255,255,0.4)' }}>
+            <div
+              className="relative h-52 w-44 profile-blob border-[3px] border-cyan-400 flex items-center justify-center bg-gradient-to-br from-cyan-500/40 to-blue-600/40"
+              style={{
+                boxShadow:
+                  "0 0 30px rgba(0,255,255,0.4), inset 0 0 20px rgba(0,255,255,0.4)",
+              }}
+            >
               <img
                 src={profilePic}
                 alt="Safeer"
                 className="absolute inset-x-0 bottom-0 h-[95%] w-full object-cover object-bottom"
-                style={{ borderRadius: 'inherit', maskImage: 'linear-gradient(to top, black 80%, transparent 100%)' }}
+                style={{
+                  borderRadius: "inherit",
+                  maskImage:
+                    "linear-gradient(to top, black 80%, transparent 100%)",
+                }}
               />
             </div>
           </div>
@@ -103,36 +132,71 @@ function RetroComputer({ scrollProgress = 0, displayedRole }) {
         <mesh position={[0, 0, 0]}>
           <boxGeometry args={[3.8, 0.15, 1.4]} />
           <meshStandardMaterial
-            color="#2d223f"
-            roughness={0.7}
+            color="#1a1a24"
+            roughness={0.8}
             metalness={0.2}
           />
         </mesh>
-        {/* Glowing RGB Edge */}
-        <mesh position={[0, -0.05, 0]}>
-          <boxGeometry args={[3.9, 0.05, 1.5]} />
+
+        {/* Ambient Underglow */}
+        <mesh position={[0, -0.06, 0]}>
+          <boxGeometry args={[3.9, 0.02, 1.5]} />
+          <meshBasicMaterial color="#ff00ff" transparent opacity={0.5} />
+        </mesh>
+
+        {/* RGB Keybed Backlight (Cyan glow under keys) */}
+        <mesh position={[0, 0.08, 0]}>
+          <boxGeometry args={[3.55, 0.02, 1.2]} />
           <meshBasicMaterial color="#00ffff" />
         </mesh>
-        {/* Keycaps placeholder */}
-        <mesh position={[0, 0.08, 0]}>
-          <boxGeometry args={[3.6, 0.05, 1.2]} />
-          <meshStandardMaterial color="#14141c" roughness={0.8} />
+
+        {/* Keycaps Block (Dark matte keys hiding the center of the bed) */}
+        <mesh position={[0, 0.1, 0]}>
+          <boxGeometry args={[3.45, 0.04, 1.1]} />
+          <meshStandardMaterial color="#0a0a0f" roughness={0.9} />
+        </mesh>
+
+        {/* Lit WASD Keys Accent */}
+        <mesh position={[-1.2, 0.11, 0.1]}>
+          <boxGeometry args={[0.4, 0.04, 0.3]} />
+          <meshBasicMaterial color="#ff00ff" />
+        </mesh>
+
+        {/* Lit Arrow Keys Accent */}
+        <mesh position={[0.8, 0.11, 0.35]}>
+          <boxGeometry args={[0.4, 0.04, 0.2]} />
+          <meshBasicMaterial color="#00ffff" />
         </mesh>
       </group>
 
       {/* --- MOUSE --- */}
       <group position={[2.2, -2.15, 0.8]} rotation={[-0.05, 0.2, 0]}>
+        {/* Mouse body */}
         <mesh position={[0, 0, 0]} castShadow>
           <boxGeometry args={[0.5, 0.15, 0.9]} />
           <meshStandardMaterial
-            color="#22222e"
-            roughness={0.5}
-            metalness={0.3}
+            color="#101018"
+            roughness={0.7}
+            metalness={0.4}
           />
         </mesh>
-        <mesh position={[0, -0.05, 0]}>
-          <boxGeometry args={[0.52, 0.05, 0.92]} />
-          <meshBasicMaterial color="#8a2be2" />
+
+        {/* Mouse Underglow */}
+        <mesh position={[0, -0.06, 0]}>
+          <boxGeometry args={[0.55, 0.02, 0.95]} />
+          <meshBasicMaterial color="#00ffff" transparent opacity={0.5} />
+        </mesh>
+
+        {/* RGB Scroll Wheel */}
+        <mesh position={[0, 0.05, -0.2]}>
+          <boxGeometry args={[0.06, 0.12, 0.25]} />
+          <meshBasicMaterial color="#ff00ff" />
+        </mesh>
+
+        {/* RGB Palm Logo / Back Accent */}
+        <mesh position={[0, 0.08, 0.25]}>
+          <boxGeometry args={[0.2, 0.02, 0.2]} />
+          <meshBasicMaterial color="#00ffff" />
         </mesh>
       </group>
 

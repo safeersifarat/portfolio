@@ -26,7 +26,7 @@ export default function PortfolioApp() {
         setContentY(0);
       } else {
         const progress = (value - fadeStart) / (fadeEnd - fadeStart);
-        setContentOpacity(Math.min(progress * 2, 1));
+        setContentOpacity(Math.min(progress * 5, 1));
         setContentBlur(20 - Math.round(progress * 20));
         setContentY(100 - progress * 100);
       }
