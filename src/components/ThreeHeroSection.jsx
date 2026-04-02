@@ -1,0 +1,274 @@
+import React, { useRef, useMemo, useEffect, useState } from "react";
+import { Canvas, useFrame } from "@react-three/fiber";
+import { Html, PerspectiveCamera } from "@react-three/drei";
+import * as THREE from "three";
+import profilePic from "../assets/safeerheadshot.png";
+
+function RetroComputer({ scrollProgress = 0, displayedRole }) {
+  const groupRef = useRef();
+
+  useFrame(() => {
+    if (!groupRef.current) return;
+
+    const p = scrollProgress;
+
+    groupRef.current.position.z = THREE.MathUtils.lerp(0, -20, p);
+    groupRef.current.position.y = THREE.MathUtils.lerp(-0.5, 0.4, p);
+    groupRef.current.rotation.x = THREE.MathUtils.lerp(0, 0.15, p);
+    groupRef.current.rotation.y = THREE.MathUtils.lerp(0, 1, p);
+    groupRef.current.rotation.z = THREE.MathUtils.lerp(0, 0.05, p);
+  });
+
+  return (
+    <group ref={groupRef}>
+      {/* --- DESK MAT --- */}
+      <mesh position={[0.4, -2.25, 0.5]} rotation={[-0.05, 0, 0]}>
+        <boxGeometry args={[9.5, 0.05, 3.5]} />
+        <meshStandardMaterial color="#1a122e" roughness={0.9} metalness={0.1} />
+      </mesh>
+      {/* Desk Mat Edge Glow */}
+      <mesh position={[0.4, -2.28, 0.5]} rotation={[-0.05, 0, 0]}>
+        <boxGeometry args={[9.6, 0.02, 3.6]} />
+        <meshBasicMaterial color="#00ffff" transparent opacity={0.6} />
+      </mesh>
+
+      {/* --- MONITOR --- */}
+      {/* Back / Body (Sleek gray-purple acrylic) */}
+      <mesh position={[0, 0.5, -0.1]}>
+        <boxGeometry args={[4.6, 3.2, 0.4]} />
+        <meshStandardMaterial color="#2a2a35" metalness={0.4} roughness={0.5} />
+      </mesh>
+
+      {/* Screen Bezel (Matte dark) */}
+      <mesh position={[0, 0.5, 0.12]}>
+        <boxGeometry args={[3.8, 2.6, 0.08]} />
+        <meshStandardMaterial color="#111116" metalness={0.1} roughness={0.8} />
+      </mesh>
+
+      {/* Black screen backing */}
+      <mesh position={[0, 0.55, 0.16]}>
+        <planeGeometry args={[3.55, 2.35]} />
+        <meshStandardMaterial color="#000000" />
+      </mesh>
+
+      {/* Screen HTML overlay */}
+      <Html transform position={[0, 0.55, 0.17]} distanceFactor={1.5}>
+        <div
+          className="w-[560px] h-[340px] bg-black text-white grid grid-cols-[1.5fr_1fr] items-center px-8"
+          style={{ boxShadow: "inset 0 0 20px rgba(0,255,255,0.15)" }}
+        >
+          <div className="pr-2">
+            <p className="mb-2 text-sm tracking-[0.35em] bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+              HI THERE,
+            </p>
+            <h1 className="text-[2.75rem] leading-none mb-4 font-black">I'M SAFEER</h1>
+            <div className="text-lg text-gray-300 whitespace-nowrap">
+              <span className="text-white">
+                I'm a{" "}
+                <span className="bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent font-semibold">
+                  {displayedRole}
+                </span>
+              </span>
+              <span className="ml-1 inline-block h-[1.1em] w-[2px] bg-cyan-400 animate-pulse align-middle" />
+            </div>
+          </div>
+          <div className="flex justify-center items-center">
+            <div className="relative h-52 w-44 profile-blob border-[3px] border-cyan-400 flex items-center justify-center bg-gradient-to-br from-cyan-500/40 to-blue-600/40" style={{ boxShadow: '0 0 30px rgba(0,255,255,0.4), inset 0 0 20px rgba(0,255,255,0.4)' }}>
+              <img
+                src={profilePic}
+                alt="Safeer"
+                className="absolute inset-x-0 bottom-0 h-[95%] w-full object-cover object-bottom"
+                style={{ borderRadius: 'inherit', maskImage: 'linear-gradient(to top, black 80%, transparent 100%)' }}
+              />
+            </div>
+          </div>
+        </div>
+      </Html>
+
+      {/* Monitor Stand Base */}
+      <mesh position={[0, -1.8, -0.2]}>
+        <planeGeometry args={[1.6, 1.2]} rotation={[-Math.PI / 2, 0, 0]} />
+        <meshStandardMaterial color="#1a1a24" metalness={0.3} roughness={0.7} />
+      </mesh>
+
+      {/* Monitor Stand Neck */}
+      <mesh position={[0, -0.6, -0.15]}>
+        <cylinderGeometry args={[0.2, 0.3, 2.2, 8]} />
+        <meshStandardMaterial color="#1a1a24" metalness={0.4} roughness={0.5} />
+      </mesh>
+
+      {/* --- KEYBOARD --- */}
+      <group position={[-0.8, -2.15, 0.7]} rotation={[-0.05, 0, 0]}>
+        {/* Base */}
+        <mesh position={[0, 0, 0]}>
+          <boxGeometry args={[3.8, 0.15, 1.4]} />
+          <meshStandardMaterial
+            color="#2d223f"
+            roughness={0.7}
+            metalness={0.2}
+          />
+        </mesh>
+        {/* Glowing RGB Edge */}
+        <mesh position={[0, -0.05, 0]}>
+          <boxGeometry args={[3.9, 0.05, 1.5]} />
+          <meshBasicMaterial color="#00ffff" />
+        </mesh>
+        {/* Keycaps placeholder */}
+        <mesh position={[0, 0.08, 0]}>
+          <boxGeometry args={[3.6, 0.05, 1.2]} />
+          <meshStandardMaterial color="#14141c" roughness={0.8} />
+        </mesh>
+      </group>
+
+      {/* --- MOUSE --- */}
+      <group position={[2.2, -2.15, 0.8]} rotation={[-0.05, 0.2, 0]}>
+        <mesh position={[0, 0, 0]} castShadow>
+          <boxGeometry args={[0.5, 0.15, 0.9]} />
+          <meshStandardMaterial
+            color="#22222e"
+            roughness={0.5}
+            metalness={0.3}
+          />
+        </mesh>
+        <mesh position={[0, -0.05, 0]}>
+          <boxGeometry args={[0.52, 0.05, 0.92]} />
+          <meshBasicMaterial color="#8a2be2" />
+        </mesh>
+      </group>
+
+      {/* --- CPU TOWER --- */}
+      <group position={[3.6, -0.5, -0.4]}>
+        {/* Chassis */}
+        <mesh position={[0, 0, 0]}>
+          <boxGeometry args={[1.8, 3.6, 3.2]} />
+          <meshStandardMaterial
+            color="#1a1a24"
+            metalness={0.4}
+            roughness={0.6}
+          />
+        </mesh>
+
+        {/* Glass Side Panel */}
+        <mesh position={[-0.91, 0, 0]}>
+          <planeGeometry args={[3.0, 3.4]} rotation={[0, -Math.PI / 2, 0]} />
+          <meshPhysicalMaterial
+            color="#2a0044"
+            transmission={0.8}
+            opacity={1}
+            transparent
+            metalness={0.1}
+            roughness={0.2}
+            clearcoat={1}
+          />
+        </mesh>
+
+        {/* Internal Core Light */}
+        <mesh position={[-0.5, 0, 0]}>
+          <boxGeometry args={[0.5, 2.8, 2.5]} />
+          <meshBasicMaterial color="#8a2be2" transparent opacity={0.25} />
+        </mesh>
+
+        {/* Fan 1 (Top) */}
+        <mesh position={[-0.5, 1.0, 1.4]} rotation={[0, -Math.PI / 2, 0]}>
+          <torusGeometry args={[0.35, 0.05, 16, 32]} />
+          <meshBasicMaterial color="#00ffff" />
+        </mesh>
+        {/* Fan 2 (Bottom) */}
+        <mesh position={[-0.5, -0.5, 1.4]} rotation={[0, -Math.PI / 2, 0]}>
+          <torusGeometry args={[0.35, 0.05, 16, 32]} />
+          <meshBasicMaterial color="#8a2be2" />
+        </mesh>
+
+        {/* GPU Block */}
+        <mesh position={[0, -0.2, -0.5]}>
+          <boxGeometry args={[1.2, 0.4, 2.0]} />
+          <meshStandardMaterial color="#1c1c28" metalness={0.5} />
+        </mesh>
+        {/* GPU RGB Line */}
+        <mesh position={[-0.6, -0.2, -0.5]}>
+          <boxGeometry args={[0.05, 0.02, 2.0]} />
+          <meshBasicMaterial color="#00ffff" />
+        </mesh>
+      </group>
+    </group>
+  );
+}
+
+export default function ThreeHeroSection() {
+  const sectionRef = useRef(null);
+  const [displayedRole, setDisplayedRole] = useState("");
+  const [roleIndex, setRoleIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [progress, setProgress] = useState(0);
+  const [opacity, setOpacity] = useState(1);
+
+  const roles = useMemo(
+    () => ["Full Stack Developer", "Mobile App Developer", "AI Agent Builder"],
+    [],
+  );
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const max = window.innerHeight * 1;
+      const value = Math.min(window.scrollY / max, 1);
+      setProgress(value);
+
+      const fadeStart = 0.78;
+      const fadeEnd = 0.96;
+      const fadeValue =
+        value <= fadeStart
+          ? 1
+          : Math.max(0, 1 - (value - fadeStart) / (fadeEnd - fadeStart));
+      setOpacity(fadeValue);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const currentRole = roles[roleIndex];
+    const speed = isDeleting ? 50 : 90;
+
+    const timer = setTimeout(() => {
+      if (!isDeleting) {
+        const next = currentRole.slice(0, displayedRole.length + 1);
+        setDisplayedRole(next);
+        if (next === currentRole) {
+          setTimeout(() => setIsDeleting(true), 1200);
+        }
+      } else {
+        const next = currentRole.slice(0, displayedRole.length - 1);
+        setDisplayedRole(next);
+        if (next === "") {
+          setIsDeleting(false);
+          setRoleIndex((prev) => (prev + 1) % roles.length);
+        }
+      }
+    }, speed);
+
+    return () => clearTimeout(timer);
+  }, [displayedRole, isDeleting, roleIndex, roles]);
+
+  return (
+    <section ref={sectionRef} id="home" className="relative h-[100vh]">
+      <div
+        className="fixed top-0 left-0 h-screen w-full z-0"
+        style={{ opacity, pointerEvents: opacity < 0.1 ? "none" : "auto" }}
+      >
+        <Canvas>
+          <PerspectiveCamera makeDefault position={[0, 0, 3.1]} fov={28} />
+          <ambientLight intensity={1.4} />
+          <directionalLight position={[3, 5, 5]} intensity={2} />
+          <pointLight position={[-4, 3, 4]} intensity={1.5} color="#00ffff" />
+          <pointLight position={[4, 3, 4]} intensity={1.5} color="#8a2be2" />
+
+          <RetroComputer
+            scrollProgress={progress}
+            displayedRole={displayedRole}
+          />
+        </Canvas>
+      </div>
+    </section>
+  );
+}
