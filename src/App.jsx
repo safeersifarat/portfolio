@@ -38,18 +38,21 @@ export default function PortfolioApp() {
   const projects = [
     {
       title: "Habitster",
-      desc: "A gamified habit-building app with an AI-powered habit coach.",
-      tech: ["Flutter", "Firebase", "AI"],
+      github: "https://github.com/safeersifarat/habitster",
+      desc: "Habitster is an AI-powered habit-building mobile app that helps users develop positive routines through gamification and personalized guidance. It uses engaging game elements such as XP points, energy levels, and an upgradable personal island that users can improve using coins earned from completing habits. The AI Habit Coach analyzes user behavior and goals to suggest customized habits and provide adaptive feedback, making habit-building more motivating, enjoyable, and sustainable.",
+      tech: ["Flutter", "Node.js", "AI", "Appwrite"],
     },
     {
-      title: "Partnership Projects",
-      desc: "Collaborative GitHub projects showcasing teamwork and production workflows.",
-      tech: ["React", "Node.js", "MongoDB"],
+      title: "Fit-Sync",
+      github: "https://github.com/safeersifarat/fit-sync",
+      desc: "FitSync is a smart fitness app that uses real-time computer vision to monitor exercises through a mobile camera. It tracks body posture, counts repetitions automatically, and gives instant feedback to correct form and prevent injuries. The system also provides personalized workout suggestions and tracks calories burned and consumed using both manual input and camera-based food recognition, making fitness management more easy and convenient.",
+      tech: ["Flutter", "Node.js", "AI", "Appwrite"],
     },
     {
-      title: "CS Mini Projects",
-      desc: "Academic and personal builds across web, mobile, and backend systems.",
-      tech: ["Python", "C++", "JavaScript"],
+      title: "Dvoting",
+      github: "https://github.com/safeersifarat/dvoting",
+      desc: "Dvoting is a decentralized blockchain-based voting system built on Ethereum that enables secure, transparent, and tamper-proof online elections. It allows admins to create and manage elections, verify voters, and publish real-time results, while voters can securely register and cast their votes through the blockchain, ensuring one-person-one-vote integrity and transparency.",
+      tech: ["React", "Solidity", "Ganache", "MetaMask"],
     },
   ];
 
@@ -195,60 +198,67 @@ export default function PortfolioApp() {
             </p>
           </div>
         </section>
-        <section id="projects" className="mx-auto max-w-6xl px-8 py-20">
-          <h2 className="mb-8 text-3xl font-semibold">Featured Projects</h2>
-          <div className="grid gap-6 md:grid-cols-3">
-            {projects.map((project) => (
-              <div
-                key={project.title}
-                className="rounded-3xl border border-white/10 bg-white/5 p-6 shadow-2xl backdrop-blur transition-transform hover:scale-105"
-              >
-                <h3 className="text-xl font-semibold">{project.title}</h3>
-                <p className="mt-3 text-gray-300">{project.desc}</p>
-                <div className="mt-4 flex flex-wrap gap-2">
-                  {project.tech.map((item) => (
-                    <span
-                      key={item}
-                      className="rounded-full bg-white/10 px-3 py-1 text-sm text-gray-200"
-                    >
-                      {item}
-                    </span>
-                  ))}
+        <section
+          id="projects"
+          className="mx-auto max-w-5xl px-8 py-20 flex flex-col gap-24"
+        >
+          <h2 className="mb-4 text-4xl md:text-5xl font-bold tracking-tight text-center">
+            Projects
+          </h2>
+          {projects.map((project, index) => (
+            <motion.div
+              key={project.title}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true, margin: "-100px" }}
+              className="flex flex-col gap-8 rounded-[2.5rem] border border-white/10 bg-white/5 p-8 md:p-12 shadow-2xl backdrop-blur-xl"
+            >
+              <div className="flex flex-col gap-6">
+                <div className="flex flex-col md:flex-row md:items-start justify-between gap-6">
+                  <div>
+                    <h3 className="text-3xl md:text-4xl font-bold bg-linear-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent mb-4">
+                      {project.title}
+                    </h3>
+                    <div className="flex flex-wrap gap-3 mb-6">
+                      {project.tech.map((tool) => (
+                        <span
+                          key={tool}
+                          className="px-4 py-1.5 rounded-xl border border-white/20 bg-white/5 text-sm font-medium text-gray-200 backdrop-blur-md shadow-sm"
+                        >
+                          {tool}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-black font-semibold hover:bg-gray-200 transition-colors shrink-0"
+                  >
+                    <GithubIcon className="w-5 h-5" /> Source Code
+                  </a>
+                </div>
+                <p className="text-lg md:text-xl text-gray-300 font-light leading-relaxed">
+                  {project.desc}
+                </p>
+              </div>
+
+              {/* Demo Video Section */}
+              <div className="w-full aspect-video rounded-3xl border border-white/10 bg-linear-to-br from-black/60 to-purple-900/20 flex flex-col items-center justify-center shadow-inner overflow-hidden relative group">
+                <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors"></div>
+                <div className="relative z-10 flex flex-col items-center gap-4 opacity-50">
+                  <div className="w-16 h-16 rounded-full border-2 border-white/30 flex items-center justify-center backdrop-blur-sm">
+                    <div className="w-0 h-0 border-t-8 border-t-transparent border-l-12 border-l-white border-b-8 border-b-transparent ml-1"></div>
+                  </div>
+                  <span className="text-lg font-medium tracking-widest uppercase">
+                    Video Demo Coming Soon
+                  </span>
                 </div>
               </div>
-            ))}
-          </div>
-        </section>
-
-        <section className="mx-auto max-w-6xl px-8 py-20">
-          <h2 className="mb-8 text-3xl font-semibold">Project Showcase</h2>
-          <div className="grid gap-8 md:grid-cols-2">
-            {projects.map((project) => (
-              <motion.div
-                key={`showcase-${project.title}`}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                viewport={{ once: true }}
-                whileHover={{ scale: 1.03, rotateX: 2, rotateY: -2 }}
-                className="rounded-[2rem] border border-white/10 bg-white/5 p-6 shadow-2xl backdrop-blur-xl"
-              >
-                <div className="mb-6 flex h-48 items-center justify-center rounded-3xl border border-white/10 bg-linear-to-br from-purple-500/20 to-cyan-500/20 text-gray-300">
-                  Project Preview
-                </div>
-                <h3 className="text-2xl font-semibold">{project.title}</h3>
-                <p className="mt-3 leading-7 text-gray-300">{project.desc}</p>
-                <div className="mt-5 flex gap-3">
-                  <button className="rounded-2xl bg-white px-5 py-2 font-medium text-black">
-                    GitHub
-                  </button>
-                  <button className="rounded-2xl border border-white/20 px-5 py-2">
-                    Live Demo
-                  </button>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+            </motion.div>
+          ))}
         </section>
 
         <section className="mx-auto grid max-w-6xl gap-8 px-8 py-20 md:grid-cols-2">

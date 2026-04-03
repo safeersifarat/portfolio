@@ -93,10 +93,15 @@ function RetroComputer({ scrollProgress = 0, displayedRole }) {
           </div>
           <div className="flex justify-center items-center">
             <div
-              className="relative h-52 w-44 profile-blob border-[3px] border-cyan-400 flex items-center justify-center bg-gradient-to-br from-cyan-500/40 to-blue-600/40"
+              className="relative h-52 w-44 profile-blob border-[3px] border-cyan-100 flex items-center justify-center bg-gradient-to-br from-cyan-700 to-blue-600/40"
               style={{
-                boxShadow:
-                  "0 0 30px rgba(0,255,255,0.4), inset 0 0 20px rgba(0,255,255,0.4)",
+                boxShadow: `
+                    0 0 18px rgba(0,255,255,0.55),
+                    0 0 35px rgba(0,255,255,0.45),
+                    0 0 65px rgba(0,255,255,0.35),
+                    0 0 95px rgba(0,255,255,0.20),
+                    inset 0 0 25px rgba(0,255,255,0.45)
+                     `,
               }}
             >
               <img
