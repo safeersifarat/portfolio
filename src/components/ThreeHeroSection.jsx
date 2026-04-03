@@ -322,7 +322,7 @@ export default function ThreeHeroSection() {
   }, []);
 
   const getCameraPosition = () => {
-    if (windowWidth < 480) return [0, 0.2, 10.5];
+    if (windowWidth < 480) return [0, -0.1, 11.0];
     if (windowWidth < 768) return [0, 0.2, 7];
     if (windowWidth < 1024) return [0, 0.1, 4.5];
     return [0, 0, 3.1];
@@ -369,7 +369,7 @@ export default function ThreeHeroSection() {
           <pointLight position={[-4, 3, 4]} intensity={1.5} color="#00ffff" />
           <pointLight position={[4, 3, 4]} intensity={1.5} color="#8a2be2" />
 
-          <group scale={windowWidth < 768 ? [1, 1.6, 1] : [1, 1, 1]}>
+          <group scale={windowWidth < 480 ? [1, 1.25, 1] : (windowWidth < 768 ? [1, 1.6, 1] : [1, 1, 1])}>
             <RetroComputer
               scrollProgress={progress}
               displayedRole={displayedRole}
