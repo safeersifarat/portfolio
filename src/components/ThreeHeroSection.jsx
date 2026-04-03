@@ -19,7 +19,7 @@ function RetroComputer({ scrollProgress = 0, displayedRole }) {
       rotationProgress,
     );
     groupRef.current.position.y = THREE.MathUtils.lerp(
-      -0.5,
+      -0.55,
       0.4,
       rotationProgress,
     );
@@ -273,12 +273,12 @@ export default function ThreeHeroSection() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const max = window.innerHeight * 1;
+      const max = window.innerHeight * 1.5;
       const value = Math.min(window.scrollY / max, 1);
       setProgress(value);
 
-      const fadeStart = 0.78;
-      const fadeEnd = 0.96;
+      const fadeStart = 0.5;
+      const fadeEnd = 0.8;
       const fadeValue =
         value <= fadeStart
           ? 1
