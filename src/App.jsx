@@ -261,64 +261,58 @@ export default function PortfolioApp() {
           ))}
         </section>
 
-        <section className="mx-auto grid max-w-6xl gap-8 px-8 py-20 md:grid-cols-2">
+        <section id="contact" className="mx-auto max-w-3xl px-8 py-24">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="rounded-[2rem] border border-white/10 bg-white/5 p-8 shadow-2xl backdrop-blur-xl"
+            className="rounded-[2.5rem] border border-white/10 bg-white/5 p-8 md:p-12 shadow-2xl backdrop-blur-xl flex flex-col items-center text-center"
           >
-            <h2 className="mb-6 text-3xl font-semibold">
-              Achievements & GitHub
+            <h2 className="mb-4 text-4xl font-bold bg-linear-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
+              Get In Touch
             </h2>
-            <div className="grid grid-cols-2 gap-4">
-              {[
-                ["Projects", "10+"],
-                ["Technologies", "8+"],
-                ["Collaborations", "5+"],
-                ["Commits", "100+"],
-              ].map(([label, value]) => (
-                <div
-                  key={label}
-                  className="rounded-2xl border border-white/10 bg-white/5 p-5"
-                >
-                  <p className="text-sm text-gray-400">{label}</p>
-                  <p className="mt-2 text-3xl font-bold">{value}</p>
-                </div>
-              ))}
-            </div>
-          </motion.div>
-
-          <motion.div
-            id="contact"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            viewport={{ once: true }}
-            className="rounded-[2rem] border border-white/10 bg-white/5 p-8 shadow-2xl backdrop-blur-xl"
-          >
-            <h2 className="mb-6 text-3xl font-semibold">Contact Me</h2>
-            <p className="mb-6 text-gray-300">
-              Let’s build something amazing together.
+            <p className="mb-10 text-lg text-gray-300">
+              Have a project in mind or want to collaborate? Let's build something amazing together!
             </p>
-            <div className="space-y-4">
-              <input
-                className="w-full rounded-2xl border border-white/10 bg-white/5 p-4 outline-none"
-                placeholder="Your Name"
-              />
-              <input
-                className="w-full rounded-2xl border border-white/10 bg-white/5 p-4 outline-none"
-                placeholder="Your Email"
-              />
+            <form
+              className="w-full space-y-6 text-left"
+              action="https://formsubmit.co/safeersifarath@gmail.com"
+              method="POST"
+            >
+              <input type="hidden" name="_subject" value="New Contact from Portfolio!" />
+              <input type="hidden" name="_captcha" value="false" />
+              <input type="hidden" name="_template" value="table" />
+              <div className="grid gap-6 md:grid-cols-2">
+                <input
+                  name="name"
+                  required
+                  className="w-full rounded-2xl border border-white/10 bg-white/5 p-4 text-white outline-none transition-all placeholder:text-gray-500 focus:border-cyan-400 focus:bg-white/10"
+                  placeholder="Your Name"
+                />
+                <input
+                  name="email"
+                  type="email"
+                  required
+                  className="w-full rounded-2xl border border-white/10 bg-white/5 p-4 text-white outline-none transition-all placeholder:text-gray-500 focus:border-cyan-400 focus:bg-white/10"
+                  placeholder="Your Email"
+                />
+              </div>
               <textarea
-                className="h-32 w-full rounded-2xl border border-white/10 bg-white/5 p-4 outline-none"
-                placeholder="Your Message"
+                name="message"
+                required
+                className="h-40 w-full resize-none rounded-2xl border border-white/10 bg-white/5 p-4 text-white outline-none transition-all placeholder:text-gray-500 focus:border-cyan-400 focus:bg-white/10"
+                placeholder="Your Message..."
               />
-              <button className="rounded-2xl bg-white px-6 py-3 font-semibold text-black">
-                Send Message
+              <button
+                type="submit"
+                className="w-full rounded-2xl bg-linear-to-r from-cyan-500 to-purple-500 p-[2px] transition-transform hover:scale-[1.02] active:scale-95"
+              >
+                <div className="flex h-full w-full items-center justify-center rounded-2xl bg-black/50 px-8 py-4 font-bold text-white backdrop-blur-sm transition-colors hover:bg-black/0">
+                  Send Message
+                </div>
               </button>
-            </div>
+            </form>
           </motion.div>
         </section>
 
