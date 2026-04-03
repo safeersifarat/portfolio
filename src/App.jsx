@@ -65,7 +65,7 @@ export default function PortfolioApp() {
 
       {/* Floating Header Actions (Menu + Socials) */}
       <div
-        className={`fixed top-6 left-6 z-60 flex items-center gap-3 transition-opacity duration-500 ease-in-out ${isScrolled ? "opacity-100" : "opacity-0 pointer-events-none"}`}
+        className={`fixed top-4 left-4 md:top-6 md:left-6 z-60 flex items-center gap-2 md:gap-3 transition-opacity duration-500 ease-in-out ${isScrolled ? "opacity-100" : "opacity-0 pointer-events-none"}`}
       >
         <button
           onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -122,7 +122,7 @@ export default function PortfolioApp() {
               animate={{ x: 0 }}
               exit={{ x: "-100%" }}
               transition={{ type: "spring", damping: 25, stiffness: 200 }}
-              className="fixed top-0 left-0 bottom-0 z-50 w-72 bg-[#0a0a0f]/95 border-r border-white/10 p-8 pt-24 shadow-2xl flex flex-col"
+              className="fixed top-0 left-0 bottom-0 z-50 w-[85vw] max-w-72 bg-[#0a0a0f]/95 border-r border-white/10 p-6 md:p-8 pt-20 md:pt-24 shadow-2xl flex flex-col"
             >
               <div className="flex flex-col gap-6 text-lg font-medium text-gray-300">
                 <a
@@ -168,14 +168,14 @@ export default function PortfolioApp() {
       <div className="relative z-10 min-h-screen pt-[50vh]">
         <section
           id="aboutMe"
-          className="mx-auto max-w-4xl px-8 py-20 text-left flex flex-col justify-center min-h-[60vh]"
+          className="mx-auto max-w-4xl px-6 md:px-8 py-16 md:py-20 text-left flex flex-col justify-center min-h-[50vh] md:min-h-[60vh]"
         >
-          <h1 className="text-5xl md:text-7xl font-bold mb-10 tracking-tight text-center">
+          <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold mb-6 md:mb-10 tracking-tight text-center">
             <span className="bg-linear-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
               Hi there!
             </span>
           </h1>
-          <div className="space-y-6 text-xl md:text-2xl text-gray-300 font-light leading-relaxed">
+          <div className="space-y-4 md:space-y-6 text-lg md:text-xl lg:text-2xl text-gray-300 font-light leading-relaxed">
             <p>
               My name is Safeer Sifarath, and I'm a Computer Science Engineering
               graduate. I have a passion for all things technology from software
@@ -192,7 +192,7 @@ export default function PortfolioApp() {
               are from organizations, individuals, or students. I would try my
               best to deliver what they request within the given time frame.
             </p>
-            <p className="pt-8 text-2xl font-medium text-purple-400">
+            <p className="pt-6 md:pt-8 text-xl md:text-2xl font-medium text-purple-400">
               Below are some of the projects I have developed throughout my
               coding journey.
             </p>
@@ -200,9 +200,9 @@ export default function PortfolioApp() {
         </section>
         <section
           id="projects"
-          className="mx-auto max-w-5xl px-8 py-20 flex flex-col gap-24"
+          className="mx-auto max-w-5xl px-6 md:px-8 py-16 md:py-20 flex flex-col gap-16 md:gap-24"
         >
-          <h2 className="mb-4 text-4xl md:text-5xl font-bold tracking-tight text-center">
+          <h2 className="mb-2 md:mb-4 text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-center">
             Projects
           </h2>
           {projects.map((project, index) => (
@@ -212,15 +212,15 @@ export default function PortfolioApp() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true, margin: "-100px" }}
-              className="flex flex-col gap-8 rounded-[2.5rem] border border-white/10 bg-white/5 p-8 md:p-12 shadow-2xl backdrop-blur-xl"
+              className="flex flex-col gap-6 md:gap-8 rounded-[2rem] md:rounded-[2.5rem] border border-white/10 bg-white/5 p-6 md:p-12 shadow-2xl backdrop-blur-xl"
             >
-              <div className="flex flex-col gap-6">
-                <div className="flex flex-col md:flex-row md:items-start justify-between gap-6">
+              <div className="flex flex-col gap-5 md:gap-6">
+                <div className="flex flex-col md:flex-row md:items-start justify-between gap-4 md:gap-6">
                   <div>
-                    <h3 className="text-3xl md:text-4xl font-bold bg-linear-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent mb-4">
+                    <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold bg-linear-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent mb-3 md:mb-4">
                       {project.title}
                     </h3>
-                    <div className="flex flex-wrap gap-3 mb-6">
+                    <div className="flex flex-wrap gap-2 md:gap-3 mb-4 md:mb-6">
                       {project.tech.map((tool) => (
                         <span
                           key={tool}
@@ -235,12 +235,12 @@ export default function PortfolioApp() {
                     href={project.github}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-black font-semibold hover:bg-gray-200 transition-colors shrink-0"
+                    className="inline-flex w-full md:w-auto justify-center items-center gap-2 px-6 py-3 rounded-full bg-white text-black font-semibold hover:bg-gray-200 transition-colors shrink-0"
                   >
                     <GithubIcon className="w-5 h-5" /> Source Code
                   </a>
                 </div>
-                <p className="text-lg md:text-xl text-gray-300 font-light leading-relaxed">
+                <p className="text-base md:text-lg lg:text-xl text-gray-300 font-light leading-relaxed">
                   {project.desc}
                 </p>
               </div>
@@ -252,7 +252,7 @@ export default function PortfolioApp() {
                   <div className="w-16 h-16 rounded-full border-2 border-white/30 flex items-center justify-center backdrop-blur-sm">
                     <div className="w-0 h-0 border-t-8 border-t-transparent border-l-12 border-l-white border-b-8 border-b-transparent ml-1"></div>
                   </div>
-                  <span className="text-lg font-medium tracking-widest uppercase">
+                  <span className="text-sm md:text-lg font-medium tracking-widest uppercase text-center px-4">
                     Video Demo Coming Soon
                   </span>
                 </div>
@@ -261,26 +261,34 @@ export default function PortfolioApp() {
           ))}
         </section>
 
-        <section id="contact" className="mx-auto max-w-3xl px-8 py-24">
+        <section
+          id="contact"
+          className="mx-auto max-w-3xl px-6 md:px-8 py-16 md:py-24"
+        >
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="rounded-[2.5rem] border border-white/10 bg-white/5 p-8 md:p-12 shadow-2xl backdrop-blur-xl flex flex-col items-center text-center"
+            className="rounded-[2rem] md:rounded-[2.5rem] border border-white/10 bg-white/5 p-6 md:p-12 shadow-2xl backdrop-blur-xl flex flex-col items-center text-center"
           >
-            <h2 className="mb-4 text-4xl font-bold bg-linear-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
+            <h2 className="mb-3 md:mb-4 text-3xl md:text-4xl font-bold bg-linear-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
               Get In Touch
             </h2>
-            <p className="mb-10 text-lg text-gray-300">
-              Have a project in mind or want to collaborate? Let's build something amazing together!
+            <p className="mb-8 md:mb-10 text-base md:text-lg text-gray-300">
+              Have a project in mind or want to collaborate? Let's build
+              something amazing together!
             </p>
             <form
               className="w-full space-y-6 text-left"
               action="https://formsubmit.co/safeersifarath@gmail.com"
               method="POST"
             >
-              <input type="hidden" name="_subject" value="New Contact from Portfolio!" />
+              <input
+                type="hidden"
+                name="_subject"
+                value="New Contact from Portfolio!"
+              />
               <input type="hidden" name="_captcha" value="false" />
               <input type="hidden" name="_template" value="table" />
               <div className="grid gap-6 md:grid-cols-2">
@@ -317,7 +325,7 @@ export default function PortfolioApp() {
         </section>
 
         <footer className="mt-16 border-t border-white/10">
-          <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-8 py-8 text-sm text-gray-400 md:flex-row">
+          <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-6 md:px-8 py-8 text-sm text-gray-400 md:flex-row text-center">
             <p>© 2026 Safeer. Built with React.</p>
             <a href="#home">Back to top ↑</a>
           </div>

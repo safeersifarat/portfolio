@@ -4,7 +4,7 @@ import { Html, PerspectiveCamera } from "@react-three/drei";
 import * as THREE from "three";
 import profilePic from "../assets/safeerheadshot.png";
 
-function RetroComputer({ scrollProgress = 0, displayedRole }) {
+function RetroComputer({ scrollProgress = 0, displayedRole, isMobile }) {
   const groupRef = useRef();
 
   useFrame(() => {
@@ -23,6 +23,7 @@ function RetroComputer({ scrollProgress = 0, displayedRole }) {
       0.4,
       rotationProgress,
     );
+    groupRef.current.position.x = isMobile ? -1.0 : 0;
     groupRef.current.rotation.x = THREE.MathUtils.lerp(
       0,
       0.2,
@@ -270,6 +271,9 @@ export default function ThreeHeroSection() {
   const [isDeleting, setIsDeleting] = useState(false);
   const [progress, setProgress] = useState(0);
   const [opacity, setOpacity] = useState(1);
+  const [windowWidth, setWindowWidth] = useState(
+    typeof window !== "undefined" ? window.innerWidth : 1024
+  );
 
   const roles = useMemo(
     () => ["Full Stack Developer", "Mobile App Developer", "AI Agent Builder"],
@@ -294,6 +298,19 @@ export default function ThreeHeroSection() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const getCameraPosition = () => {
+    if (windowWidth < 480) return [0, 0.2, 5.8];
+    if (windowWidth < 768) return [0, 0.2, 4.8];
+    if (windowWidth < 1024) return [0, 0.1, 3.8];
+    return [0, 0, 3.1];
+  };
 
   useEffect(() => {
     const currentRole = roles[roleIndex];
@@ -326,7 +343,7 @@ export default function ThreeHeroSection() {
         style={{ opacity, pointerEvents: opacity < 0.1 ? "none" : "auto" }}
       >
         <Canvas>
-          <PerspectiveCamera makeDefault position={[0, 0, 3.1]} fov={28} />
+          <PerspectiveCamera makeDefault position={getCameraPosition()} fov={28} />
           <ambientLight intensity={1.4} />
           <directionalLight position={[3, 5, 5]} intensity={2} />
           <pointLight position={[-4, 3, 4]} intensity={1.5} color="#00ffff" />
@@ -335,6 +352,7 @@ export default function ThreeHeroSection() {
           <RetroComputer
             scrollProgress={progress}
             displayedRole={displayedRole}
+            isMobile={windowWidth < 768}
           />
         </Canvas>
       </div>
