@@ -330,10 +330,12 @@ export default function PortfolioApp() {
           </motion.div>
           <div className="flex items-center justify-center gap-4 my-8 opacity-60">
             <div className="h-px w-24 bg-linear-to-r from-transparent to-white/20"></div>
-            <span className="text-gray-500 uppercase tracking-widest text-sm font-medium">or</span>
+            <span className="text-gray-500 uppercase tracking-widest text-sm font-medium">
+              or
+            </span>
             <div className="h-px w-24 bg-linear-to-l from-transparent to-white/20"></div>
           </div>
-          
+
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -342,7 +344,7 @@ export default function PortfolioApp() {
             className="flex justify-center"
           >
             <a
-              href="https://t.me/safeersifarath"
+              href="tg://resolve?domain=Safeersifarath"
               target="_blank"
               rel="noreferrer"
               className="group flex w-full md:w-auto justify-center items-center gap-3 rounded-full bg-[#24A1DE]/10 border border-[#24A1DE]/30 px-6 py-4 text-[#24A1DE] transition-all hover:bg-[#24A1DE] hover:text-white hover:shadow-[0_0_20px_rgba(36,161,222,0.4)]"
