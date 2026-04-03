@@ -7,9 +7,11 @@ export default defineConfig({
   server: {
     host: true,
     strictPort: true,
+    allowedHosts: true,
   },
   preview: {
     host: true,
     strictPort: true,
+    allowedHosts: true,
   }
 })
