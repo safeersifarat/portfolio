@@ -14,12 +14,15 @@ function RetroComputer({ scrollProgress = 0, displayedRole, windowWidth }) {
     const p = scrollProgress;
     const rotationProgress = Math.min(p / 0.55, 0.74);
 
-    const maxZ = isMobile ? -35 : -20;
-    const endY = isMobile ? 0.8 : 0.4;
+    const isPhone = windowWidth < 480;
+    const isTablet = windowWidth >= 480 && windowWidth < 768;
 
-    // Start X at 0 to keep the monitor centered. Final X at -0.5 to center the overall desk when rotated.
-    const startX = isMobile ? 0 : 0;
-    const endX = isMobile ? -0.5 : 0;
+    const maxZ = isPhone ? -52 : (isTablet ? -35 : -20);
+    const endY = isPhone ? 1.2 : (isTablet ? 0.8 : 0.4);
+
+    // Start X at 0 to keep the monitor centered. Final X shift matches the aggressiveness of the zoom constraint.
+    const startX = 0;
+    const endX = isPhone ? -0.8 : (isTablet ? -0.5 : 0);
 
     groupRef.current.position.z = THREE.MathUtils.lerp(
       0,
@@ -319,7 +322,7 @@ export default function ThreeHeroSection() {
   }, []);
 
   const getCameraPosition = () => {
-    if (windowWidth < 480) return [0, 0.2, 13.5];
+    if (windowWidth < 480) return [0, 0.2, 10.5];
     if (windowWidth < 768) return [0, 0.2, 7];
     if (windowWidth < 1024) return [0, 0.1, 4.5];
     return [0, 0, 3.1];
