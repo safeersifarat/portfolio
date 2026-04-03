@@ -21,6 +21,12 @@ const InstagramIcon = ({ className }) => (
   </svg>
 );
 
+const TelegramIcon = ({ className }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="currentColor">
+    <path d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm5.89 8.22l-2 9.4c-.15.68-.56.86-1.13.54l-3.13-2.31-1.51 1.46c-.17.17-.31.31-.63.31l.22-3.19 5.81-5.25c.25-.23-.05-.36-.4-.12l-7.18 4.52-3.09-.97c-.67-.21-.68-.67.14-.99l12.09-4.66c.56-.22 1.05.12.81 1.26z" />
+  </svg>
+);
+
 export default function PortfolioApp() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -321,6 +327,31 @@ export default function PortfolioApp() {
                 </div>
               </button>
             </form>
+          </motion.div>
+          <div className="flex items-center justify-center gap-4 my-8 opacity-60">
+            <div className="h-px w-24 bg-linear-to-r from-transparent to-white/20"></div>
+            <span className="text-gray-500 uppercase tracking-widest text-sm font-medium">or</span>
+            <div className="h-px w-24 bg-linear-to-l from-transparent to-white/20"></div>
+          </div>
+          
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="flex justify-center"
+          >
+            <a
+              href="https://t.me/safeersifarath"
+              target="_blank"
+              rel="noreferrer"
+              className="group flex w-full md:w-auto justify-center items-center gap-3 rounded-full bg-[#24A1DE]/10 border border-[#24A1DE]/30 px-6 py-4 text-[#24A1DE] transition-all hover:bg-[#24A1DE] hover:text-white hover:shadow-[0_0_20px_rgba(36,161,222,0.4)]"
+            >
+              <TelegramIcon className="w-6 h-6 transition-transform group-hover:scale-110" />
+              <span className="font-medium text-lg">
+                Message me on Telegram
+              </span>
+            </a>
           </motion.div>
         </section>
 

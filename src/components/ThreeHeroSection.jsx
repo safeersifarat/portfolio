@@ -4,8 +4,9 @@ import { Html, PerspectiveCamera } from "@react-three/drei";
 import * as THREE from "three";
 import profilePic from "../assets/safeerheadshot.png";
 
-function RetroComputer({ scrollProgress = 0, displayedRole, isMobile }) {
+function RetroComputer({ scrollProgress = 0, displayedRole, windowWidth }) {
   const groupRef = useRef();
+  const isMobile = windowWidth < 768;
 
   useFrame(() => {
     if (!groupRef.current) return;
@@ -13,17 +14,28 @@ function RetroComputer({ scrollProgress = 0, displayedRole, isMobile }) {
     const p = scrollProgress;
     const rotationProgress = Math.min(p / 0.55, 0.74);
 
+    const maxZ = isMobile ? -35 : -20;
+    const endY = isMobile ? 0.8 : 0.4;
+
+    // Start X at 0 to keep the monitor centered. Final X at -0.5 to center the overall desk when rotated.
+    const startX = isMobile ? 0 : 0;
+    const endX = isMobile ? -0.5 : 0;
+
     groupRef.current.position.z = THREE.MathUtils.lerp(
       0,
-      -20,
+      maxZ,
       rotationProgress,
     );
     groupRef.current.position.y = THREE.MathUtils.lerp(
       -0.55,
-      0.4,
+      endY,
       rotationProgress,
     );
-    groupRef.current.position.x = isMobile ? -1.0 : 0;
+    groupRef.current.position.x = THREE.MathUtils.lerp(
+      startX,
+      endX,
+      rotationProgress,
+    );
     groupRef.current.rotation.x = THREE.MathUtils.lerp(
       0,
       0.2,
@@ -76,7 +88,7 @@ function RetroComputer({ scrollProgress = 0, displayedRole, isMobile }) {
           style={{ boxShadow: "inset 0 0 20px rgba(0,255,255,0.15)" }}
         >
           <div className="pr-2">
-            <p className="mb-2 text-sm tracking-[0.35em] bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+            <p className="mb-2 text-sm tracking-[0.35em] bg-linear-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
               HI THERE,
             </p>
             <h1 className="text-[2.75rem] leading-none mb-4 font-black">
@@ -85,7 +97,7 @@ function RetroComputer({ scrollProgress = 0, displayedRole, isMobile }) {
             <div className="text-lg text-gray-300 whitespace-nowrap">
               <span className="text-white">
                 I'm a{" "}
-                <span className="bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent font-semibold">
+                <span className="bg-linear-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent font-semibold">
                   {displayedRole}
                 </span>
               </span>
@@ -94,7 +106,7 @@ function RetroComputer({ scrollProgress = 0, displayedRole, isMobile }) {
           </div>
           <div className="flex justify-center items-center">
             <div
-              className="relative h-52 w-44 profile-blob border-[3px] border-cyan-100 flex items-center justify-center bg-gradient-to-br from-cyan-700 to-blue-600/40"
+              className="relative h-52 w-44 profile-blob border-[3px] border-cyan-100 flex items-center justify-center bg-linear-to-br from-cyan-700 to-blue-600/40"
               style={{
                 boxShadow: `
                     0 0 18px rgba(0,255,255,0.55),
@@ -272,7 +284,7 @@ export default function ThreeHeroSection() {
   const [progress, setProgress] = useState(0);
   const [opacity, setOpacity] = useState(1);
   const [windowWidth, setWindowWidth] = useState(
-    typeof window !== "undefined" ? window.innerWidth : 1024
+    typeof window !== "undefined" ? window.innerWidth : 1024,
   );
 
   const roles = useMemo(
@@ -286,8 +298,9 @@ export default function ThreeHeroSection() {
       const value = Math.min(window.scrollY / max, 1);
       setProgress(value);
 
-      const fadeStart = 0.5;
-      const fadeEnd = 0.8;
+      const isMobile = window.innerWidth < 768;
+      const fadeStart = isMobile ? 0.4 : 0.5;
+      const fadeEnd = isMobile ? 0.7 : 0.8;
       const fadeValue =
         value <= fadeStart
           ? 1
@@ -306,9 +319,9 @@ export default function ThreeHeroSection() {
   }, []);
 
   const getCameraPosition = () => {
-    if (windowWidth < 480) return [0, 0.2, 5.8];
-    if (windowWidth < 768) return [0, 0.2, 4.8];
-    if (windowWidth < 1024) return [0, 0.1, 3.8];
+    if (windowWidth < 480) return [0, 0.2, 13.5];
+    if (windowWidth < 768) return [0, 0.2, 7];
+    if (windowWidth < 1024) return [0, 0.1, 4.5];
     return [0, 0, 3.1];
   };
 
@@ -337,23 +350,29 @@ export default function ThreeHeroSection() {
   }, [displayedRole, isDeleting, roleIndex, roles]);
 
   return (
-    <section ref={sectionRef} id="home" className="relative h-[100vh]">
+    <section ref={sectionRef} id="home" className="relative h-screen">
       <div
         className="fixed top-0 left-0 h-screen w-full z-0"
         style={{ opacity, pointerEvents: opacity < 0.1 ? "none" : "auto" }}
       >
         <Canvas>
-          <PerspectiveCamera makeDefault position={getCameraPosition()} fov={28} />
+          <PerspectiveCamera
+            makeDefault
+            position={getCameraPosition()}
+            fov={28}
+          />
           <ambientLight intensity={1.4} />
           <directionalLight position={[3, 5, 5]} intensity={2} />
           <pointLight position={[-4, 3, 4]} intensity={1.5} color="#00ffff" />
           <pointLight position={[4, 3, 4]} intensity={1.5} color="#8a2be2" />
 
-          <RetroComputer
-            scrollProgress={progress}
-            displayedRole={displayedRole}
-            isMobile={windowWidth < 768}
-          />
+          <group scale={windowWidth < 768 ? [1, 1.6, 1] : [1, 1, 1]}>
+            <RetroComputer
+              scrollProgress={progress}
+              displayedRole={displayedRole}
+              windowWidth={windowWidth}
+            />
+          </group>
         </Canvas>
       </div>
     </section>
