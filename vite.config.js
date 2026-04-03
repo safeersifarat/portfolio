@@ -7,11 +7,13 @@ export default defineConfig({
   server: {
     host: true,
     strictPort: true,
+    port: parseInt(process.env.PORT) || 5173,
     allowedHosts: true,
   },
   preview: {
     host: true,
     strictPort: true,
+    port: parseInt(process.env.PORT) || 4173,
     allowedHosts: true,
   }
 })
