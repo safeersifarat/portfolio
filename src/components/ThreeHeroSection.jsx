@@ -17,12 +17,12 @@ function RetroComputer({ scrollProgress = 0, displayedRole, windowWidth }) {
     const isPhone = windowWidth < 480;
     const isTablet = windowWidth >= 480 && windowWidth < 768;
 
-    const maxZ = isPhone ? -52 : (isTablet ? -35 : -20);
-    const endY = isPhone ? 1.2 : (isTablet ? 0.8 : 0.4);
+    const maxZ = isPhone ? -52 : isTablet ? -35 : -20;
+    const endY = isPhone ? 1.2 : isTablet ? 0.8 : 0.4;
 
     // Start X at 0 to keep the monitor centered. Final X shift matches the aggressiveness of the zoom constraint.
     const startX = 0;
-    const endX = isPhone ? -0.8 : (isTablet ? -0.5 : 0);
+    const endX = isPhone ? -0.8 : isTablet ? -0.5 : 0;
 
     groupRef.current.position.z = THREE.MathUtils.lerp(
       0,
@@ -369,7 +369,15 @@ export default function ThreeHeroSection() {
           <pointLight position={[-4, 3, 4]} intensity={1.5} color="#00ffff" />
           <pointLight position={[4, 3, 4]} intensity={1.5} color="#8a2be2" />
 
-          <group scale={windowWidth < 480 ? [1, 1.25, 1] : (windowWidth < 768 ? [1, 1.6, 1] : [1, 1, 1])}>
+          <group
+            scale={
+              windowWidth < 480
+                ? [1, 1.6, 1]
+                : windowWidth < 768
+                  ? [1, 1.6, 1]
+                  : [1, 1, 1]
+            }
+          >
             <RetroComputer
               scrollProgress={progress}
               displayedRole={displayedRole}
