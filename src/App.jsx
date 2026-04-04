@@ -381,9 +381,7 @@ export default function PortfolioApp() {
               className="group flex w-full md:w-auto justify-center items-center gap-3 rounded-full bg-[#0A66C2]/10 border border-[#0A66C2]/30 px-6 py-4 text-[#0A66C2] transition-all hover:bg-[#0A66C2] hover:text-white hover:shadow-[0_0_20px_rgba(10,102,194,0.4)]"
             >
               <LinkedinIcon className="w-6 h-6 transition-transform group-hover:scale-110" />
-              <span className="font-medium text-lg">
-                Connect with me on LinkedIn
-              </span>
+              <span className="font-medium text-lg">Connect on LinkedIn</span>
             </a>
           </motion.div>
         </section>
