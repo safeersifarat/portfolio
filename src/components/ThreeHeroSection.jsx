@@ -120,21 +120,23 @@ function RetroComputer({ scrollProgress = 0, displayedRole, windowWidth }) {
                   />
                 </div>
               </div>
-              <div className="text-center w-full px-6 md:px-12">
-                <p className="mb-1 text-[0.65rem] tracking-[0.35em] bg-linear-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-                  HI THERE,
-                </p>
-                <h1 className="text-[2.2rem] leading-none mb-2 font-black">
-                  I'M SAFEER
-                </h1>
-                <div className="text-sm text-gray-300 w-full">
-                  <span className="text-white">
-                    I'm a{" "}
-                    <span className="bg-linear-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent font-semibold">
-                      {displayedRole}
+              <div className="scale-x-350 md:scale-x-100 -translate-y-2">
+                <div className="text-center">
+                  <p className="mb-1 text-[0.65rem] tracking-[0.35em] bg-linear-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+                    HI THERE,
+                  </p>
+                  <h1 className="text-[2.2rem] leading-none mb-2 font-black">
+                    I'M SAFEER
+                  </h1>
+                  <div className="text-sm text-gray-300 w-full">
+                    <span className="text-white">
+                      I'm a{" "}
+                      <span className="bg-linear-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent font-semibold">
+                        {displayedRole}
+                      </span>
                     </span>
-                  </span>
-                  <span className="ml-1 inline-block h-[1.1em] w-[2px] bg-cyan-400 animate-pulse align-middle" />
+                    <span className="ml-1 inline-block h-[1.1em] w-[2px] bg-cyan-400 animate-pulse align-middle" />
+                  </div>
                 </div>
               </div>
             </>
