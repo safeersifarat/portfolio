@@ -99,7 +99,7 @@ function RetroComputer({ scrollProgress = 0, displayedRole, windowWidth }) {
             <>
               <div className="flex justify-center items-center mb-4">
                 <div
-                  className="relative h-32 w-48 profile-blob border-[2px] border-cyan-100 flex items-center justify-center bg-linear-to-br from-cyan-700 to-blue-600/40"
+                  className="relative h-32 w-40 md:w-48 profile-blob border-[2px] border-cyan-100 flex items-center justify-center bg-linear-to-br from-cyan-700 to-blue-600/40"
                   style={{
                     boxShadow: `
                         0 0 10px rgba(0,255,255,0.55),
@@ -127,7 +127,7 @@ function RetroComputer({ scrollProgress = 0, displayedRole, windowWidth }) {
                 <h1 className="text-[2.2rem] leading-none mb-2 font-black">
                   I'M SAFEER
                 </h1>
-                <div className="text-sm text-gray-300 whitespace-nowrap">
+                <div className="text-sm text-gray-300 w-full">
                   <span className="text-white">
                     I'm a{" "}
                     <span className="bg-linear-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent font-semibold">
