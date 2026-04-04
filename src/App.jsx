@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Home, User, Briefcase, Mail } from "lucide-react";
 import ThreeHeroSection from "./components/ThreeHeroSection";
+import DigitalBackground from "./components/DigitalBackground";
 
 const GithubIcon = ({ className }) => (
   <svg className={className} viewBox="0 0 24 24" fill="currentColor">
@@ -18,12 +19,6 @@ const LinkedinIcon = ({ className }) => (
 const InstagramIcon = ({ className }) => (
   <svg className={className} viewBox="0 0 24 24" fill="currentColor">
     <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-  </svg>
-);
-
-const TelegramIcon = ({ className }) => (
-  <svg className={className} viewBox="0 0 24 24" fill="currentColor">
-    <path d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm5.89 8.22l-2 9.4c-.15.68-.56.86-1.13.54l-3.13-2.31-1.51 1.46c-.17.17-.31.31-.63.31l.22-3.19 5.81-5.25c.25-.23-.05-.36-.4-.12l-7.18 4.52-3.09-.97c-.67-.21-.68-.67.14-.99l12.09-4.66c.56-.22 1.05.12.81 1.26z" />
   </svg>
 );
 
@@ -44,18 +39,27 @@ export default function PortfolioApp() {
   const projects = [
     {
       title: "Habitster",
+      highlightIndexes: {
+        3: "text-cyan-400",
+      },
       github: "https://github.com/safeersifarat/habitster",
       desc: "Habitster is an AI-powered habit-building mobile app that helps users develop positive routines through gamification and personalized guidance. It uses engaging game elements such as XP points, energy levels, and an upgradable personal island that users can improve using coins earned from completing habits. The AI Habit Coach analyzes user behavior and goals to suggest customized habits and provide adaptive feedback, making habit-building more motivating, enjoyable, and sustainable.",
       tech: ["Flutter", "Node.js", "AI", "Appwrite"],
     },
     {
       title: "Fit-Sync",
+      highlightIndexes: {
+        1: "text-cyan-400",
+      },
       github: "https://github.com/safeersifarat/fit-sync",
       desc: "FitSync is a smart fitness app that uses real-time computer vision to monitor exercises through a mobile camera. It tracks body posture, counts repetitions automatically, and gives instant feedback to correct form and prevent injuries. The system also provides personalized workout suggestions and tracks calories burned and consumed using both manual input and camera-based food recognition, making fitness management more easy and convenient.",
       tech: ["Flutter", "Node.js", "AI", "Appwrite"],
     },
     {
       title: "Dvoting",
+      highlightIndexes: {
+        4: "text-cyan-400",
+      },
       github: "https://github.com/safeersifarat/dvoting",
       desc: "Dvoting is a decentralized blockchain-based voting system built on Ethereum that enables secure, transparent, and tamper-proof online elections. It allows admins to create and manage elections, verify voters, and publish real-time results, while voters can securely register and cast their votes through the blockchain, ensuring one-person-one-vote integrity and transparency.",
       tech: ["React", "Solidity", "Ganache", "MetaMask"],
@@ -63,11 +67,8 @@ export default function PortfolioApp() {
   ];
 
   return (
-    <div className="relative min-h-screen bg-linear-to-br from-purple-500/20 to-cyan-500/20 text-white">
-      <div className="pointer-events-none fixed inset-0 -z-10">
-        <div className="absolute top-20 left-10 h-72 w-72 rounded-full bg-purple-500/20 blur-3xl animate-pulse" />
-        <div className="absolute bottom-20 right-10 h-80 w-80 rounded-full bg-cyan-500/20 blur-3xl animate-pulse" />
-      </div>
+    <div className="relative min-h-screen text-white">
+      <DigitalBackground />
 
       {/* Floating Header Actions (Menu + Socials) */}
       <div
@@ -177,8 +178,16 @@ export default function PortfolioApp() {
           className="mx-auto max-w-4xl px-6 md:px-8 py-16 md:py-20 text-left flex flex-col justify-center min-h-[50vh] md:min-h-[60vh]"
         >
           <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold mb-6 md:mb-10 tracking-tight text-center">
-            <span className="bg-linear-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
-              Hi there!
+            <span className="permanent-marker-regular inline-block">
+              <span className="dance dance-1">H</span>
+              <span className="dance dance-2 text-cyan-400">i</span>
+              <span>&nbsp;</span>
+              <span className="dance dance-3">t</span>
+              <span className="dance dance-4">h</span>
+              <span className="dance dance-5">e</span>
+              <span className="dance dance-6">r</span>
+              <span className="dance dance-7">e</span>
+              <span className="dance dance-8 text-cyan-400">!</span>
             </span>
           </h1>
           <div className="space-y-4 md:space-y-6 text-lg md:text-xl lg:text-2xl text-gray-300 font-light leading-relaxed">
@@ -198,7 +207,7 @@ export default function PortfolioApp() {
               are from organizations, individuals, or students. I would try my
               best to deliver what they request within the given time frame.
             </p>
-            <p className="pt-6 md:pt-8 text-xl md:text-2xl font-medium text-purple-400">
+            <p className="pt-6 md:pt-8 text-xl md:text-3xl font-medium text-gray-300">
               Below are some of the projects I have developed throughout my
               coding journey.
             </p>
@@ -223,10 +232,23 @@ export default function PortfolioApp() {
               <div className="flex flex-col gap-5 md:gap-6">
                 <div className="flex flex-col md:flex-row md:items-start justify-between gap-4 md:gap-6">
                   <div>
-                    <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold bg-linear-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent mb-3 md:mb-4">
-                      {project.title}
-                    </h3>
-                    <div className="flex flex-wrap gap-2 md:gap-3 mb-4 md:mb-6">
+                    <div className="relative inline-block mb-3">
+                      <span className="shine-line"></span>
+
+                      <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold">
+                        {project.title.split("").map((char, index) => (
+                          <span
+                            key={index}
+                            className={
+                              project.highlightIndexes?.[index] || "text-white"
+                            }
+                          >
+                            {char}
+                          </span>
+                        ))}
+                      </h3>
+                    </div>
+                    <div className="flex flex-wrap gap-5 md:gap-3 mb-4 md:mb-6">
                       {project.tech.map((tool) => (
                         <span
                           key={tool}
@@ -278,8 +300,17 @@ export default function PortfolioApp() {
             viewport={{ once: true }}
             className="rounded-[2rem] md:rounded-[2.5rem] border border-white/10 bg-white/5 p-6 md:p-12 shadow-2xl backdrop-blur-xl flex flex-col items-center text-center"
           >
-            <h2 className="mb-3 md:mb-4 text-3xl md:text-4xl font-bold bg-linear-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
-              Get In Touch
+            <h2 className="mb-3 md:mb-4 text-3xl md:text-4xl font-bold text-center">
+              <span className="permanent-marker-regular inline-block">
+                {"Get In Touch".split("").map((char, index) => (
+                  <span
+                    key={index}
+                    className={`flow-letter inline-block bg-linear-to-r from-white to-cyan-400 bg-clip-text text-transparent flow-${(index % 6) + 1}`}
+                  >
+                    {char === " " ? "\u00A0" : char}
+                  </span>
+                ))}
+              </span>
             </h2>
             <p className="mb-8 md:mb-10 text-base md:text-lg text-gray-300">
               Have a project in mind or want to collaborate? Let's build
@@ -320,9 +351,9 @@ export default function PortfolioApp() {
               />
               <button
                 type="submit"
-                className="w-full rounded-2xl bg-linear-to-r from-cyan-500 to-purple-500 p-[2px] transition-transform hover:scale-[1.02] active:scale-95"
+                className="w-full rounded-2xl bg-linear-to-r from-white to-cyan-500 p-[2px] transition-transform hover:scale-[1.02] active:scale-95"
               >
-                <div className="flex h-full w-full items-center justify-center rounded-2xl bg-black/50 px-8 py-4 font-bold text-white backdrop-blur-sm transition-colors hover:bg-black/0">
+                <div className="flex h-full w-full items-center justify-center rounded-2xl bg-black/50 px-8 py-4 font-bold text-gray-100 backdrop-blur-sm transition-colors hover:bg-black/40">
                   Send Message
                 </div>
               </button>
@@ -344,14 +375,14 @@ export default function PortfolioApp() {
             className="flex justify-center"
           >
             <a
-              href="tg://resolve?domain=Safeersifarath"
+              href="https://www.linkedin.com/in/safeersifarath"
               target="_blank"
               rel="noreferrer"
-              className="group flex w-full md:w-auto justify-center items-center gap-3 rounded-full bg-[#24A1DE]/10 border border-[#24A1DE]/30 px-6 py-4 text-[#24A1DE] transition-all hover:bg-[#24A1DE] hover:text-white hover:shadow-[0_0_20px_rgba(36,161,222,0.4)]"
+              className="group flex w-full md:w-auto justify-center items-center gap-3 rounded-full bg-[#0A66C2]/10 border border-[#0A66C2]/30 px-6 py-4 text-[#0A66C2] transition-all hover:bg-[#0A66C2] hover:text-white hover:shadow-[0_0_20px_rgba(10,102,194,0.4)]"
             >
-              <TelegramIcon className="w-6 h-6 transition-transform group-hover:scale-110" />
+              <LinkedinIcon className="w-6 h-6 transition-transform group-hover:scale-110" />
               <span className="font-medium text-lg">
-                Message me on Telegram
+                Connect with me on LinkedIn
               </span>
             </a>
           </motion.div>

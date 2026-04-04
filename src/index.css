@@ -136,4 +136,170 @@
       inset 0 0 20px rgba(255, 255, 255, 0.05);
   }
 }
+.permanent-marker-regular {
+  font-family: "Permanent Marker", cursive;
+}
 
+.dance {
+  display: inline-block;
+  animation-name: letterDance;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  transform-origin: center bottom;
+}
+
+@keyframes letterDance {
+  0%,
+  100% {
+    transform: translate(0px, 0px) rotate(0deg);
+  }
+  25% {
+    transform: translate(-1px, -8px) rotate(-4deg);
+  }
+  50% {
+    transform: translate(1px, 4px) rotate(3deg);
+  }
+  75% {
+    transform: translate(-1px, -5px) rotate(2deg);
+  }
+}
+
+/* Different frequencies */
+.dance-1 {
+  animation-duration: 1.8s;
+}
+.dance-2 {
+  animation-duration: 1.3s;
+}
+.dance-3 {
+  animation-duration: 2.1s;
+}
+.dance-4 {
+  animation-duration: 1.5s;
+}
+.dance-5 {
+  animation-duration: 2.3s;
+}
+.dance-6 {
+  animation-duration: 1.6s;
+}
+.dance-7 {
+  animation-duration: 1.9s;
+}
+.dance-8 {
+  animation-duration: 1.2s;
+}
+.shine-line {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 70%;
+  height: 2px;
+  border-radius: 9999px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.9),
+    rgb(41, 244, 255),
+    transparent
+  );
+  animation: shineSweep 2.5s ease-in-out infinite;
+}
+
+@keyframes shineSweep {
+  0% {
+    left: -25%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  50% {
+    left: 40%;
+    opacity: 1;
+  }
+  60% {
+    opacity: 0;
+  }
+  100% {
+    left: 100%;
+    opacity: 0;
+  }
+}
+.flow-letter {
+  display: inline-block;
+  animation-name: smoothFlow;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  transform-origin: center bottom;
+}
+
+@keyframes smoothFlow {
+  0%,
+  100% {
+    transform: translate(0px, 0px) rotate(0deg);
+  }
+  25% {
+    transform: translate(-1px, -8px) rotate(-4deg);
+  }
+  50% {
+    transform: translate(1px, 4px) rotate(3deg);
+  }
+  75% {
+    transform: translate(-1px, -5px) rotate(2deg);
+  }
+}
+
+/* different speeds */
+.flow-1 {
+  animation-duration: 1.6s;
+}
+.flow-2 {
+  animation-duration: 1.9s;
+}
+.flow-3 {
+  animation-duration: 1.4s;
+}
+.flow-4 {
+  animation-duration: 2.1s;
+}
+.flow-5 {
+  animation-duration: 1.7s;
+}
+.flow-6 {
+  animation-duration: 2.3s;
+}
+
+.svg-animate-circuit {
+  stroke-dasharray: 20 100;
+  animation-name: svg-trace;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.svg-animate-circuit-reverse {
+  stroke-dasharray: 20 100;
+  animation-name: svg-trace-reverse;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes svg-trace {
+  0% { stroke-dashoffset: 20; }
+  100% { stroke-dashoffset: -100; }
+}
+
+@keyframes svg-trace-reverse {
+  0% { stroke-dashoffset: -100; }
+  100% { stroke-dashoffset: 20; }
+}
+
+.mask-radial-fade {
+  mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, #000 10%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, #000 10%, transparent 100%);
+}
+
+.delay-0 { animation-delay: 0s; }
+.delay-1 { animation-delay: 1.5s; }
+.delay-2 { animation-delay: 3s; }
+.delay-3 { animation-delay: 4.5s; }
