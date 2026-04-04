@@ -6,7 +6,8 @@ import profilePic from "../assets/safeerheadshot.png";
 
 function RetroComputer({ scrollProgress = 0, displayedRole, windowWidth }) {
   const groupRef = useRef();
-  const isMobile = windowWidth < 768;
+  const isTablet = windowWidth >= 480 && windowWidth < 768;
+  const isPhone = windowWidth < 480;
 
   useFrame(() => {
     if (!groupRef.current) return;
@@ -87,51 +88,102 @@ function RetroComputer({ scrollProgress = 0, displayedRole, windowWidth }) {
       {/* Screen HTML overlay */}
       <Html transform position={[0, 0.55, 0.17]} distanceFactor={1.5}>
         <div
-          className="w-[560px] h-[340px] bg-black text-white grid grid-cols-[1.5fr_1fr] items-center px-8"
+          className={`bg-black text-white px-8 ${
+            isPhone
+              ? "w-[560px] h-[340px] flex flex-col justify-center items-center"
+              : "w-[560px] h-[340px] grid grid-cols-[1.5fr_1fr] items-center"
+          }`}
           style={{ boxShadow: "inset 0 0 20px rgba(0,255,255,0.15)" }}
         >
-          <div className="pr-2">
-            <p className="mb-2 text-sm tracking-[0.35em] bg-linear-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-              HI THERE,
-            </p>
-            <h1 className="text-[2.75rem] leading-none mb-4 font-black">
-              I'M SAFEER
-            </h1>
-            <div className="text-lg text-gray-300 whitespace-nowrap">
-              <span className="text-white">
-                I'm a{" "}
-                <span className="bg-linear-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent font-semibold">
-                  {displayedRole}
-                </span>
-              </span>
-              <span className="ml-1 inline-block h-[1.1em] w-[2px] bg-cyan-400 animate-pulse align-middle" />
-            </div>
-          </div>
-          <div className="flex justify-center items-center">
-            <div
-              className="relative h-52 w-44 profile-blob border-[3px] border-cyan-100 flex items-center justify-center bg-linear-to-br from-cyan-700 to-blue-600/40"
-              style={{
-                boxShadow: `
-                    0 0 18px rgba(0,255,255,0.55),
-                    0 0 35px rgba(0,255,255,0.45),
-                    0 0 65px rgba(0,255,255,0.35),
-                    0 0 95px rgba(0,255,255,0.20),
-                    inset 0 0 25px rgba(0,255,255,0.45)
-                     `,
-              }}
-            >
-              <img
-                src={profilePic}
-                alt="Safeer"
-                className="absolute inset-x-0 bottom-0 h-[95%] w-full object-cover object-bottom"
-                style={{
-                  borderRadius: "inherit",
-                  maskImage:
-                    "linear-gradient(to top, black 80%, transparent 100%)",
-                }}
-              />
-            </div>
-          </div>
+          {isPhone ? (
+            <>
+              <div className="flex justify-center items-center mb-4">
+                <div
+                  className="relative h-32 w-28 profile-blob border-[2px] border-cyan-100 flex items-center justify-center bg-linear-to-br from-cyan-700 to-blue-600/40"
+                  style={{
+                    boxShadow: `
+                        0 0 10px rgba(0,255,255,0.55),
+                        0 0 20px rgba(0,255,255,0.45),
+                        inset 0 0 15px rgba(0,255,255,0.45)
+                         `,
+                  }}
+                >
+                  <img
+                    src={profilePic}
+                    alt="Safeer"
+                    className="absolute inset-x-0 bottom-0 h-[95%] w-full object-cover object-bottom"
+                    style={{
+                      borderRadius: "inherit",
+                      maskImage:
+                        "linear-gradient(to top, black 80%, transparent 100%)",
+                    }}
+                  />
+                </div>
+              </div>
+              <div className="text-center">
+                <p className="mb-1 text-[0.65rem] tracking-[0.35em] bg-linear-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+                  HI THERE,
+                </p>
+                <h1 className="text-[2.2rem] leading-none mb-2 font-black">
+                  I'M SAFEER
+                </h1>
+                <div className="text-sm text-gray-300 whitespace-nowrap">
+                  <span className="text-white">
+                    I'm a{" "}
+                    <span className="bg-linear-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent font-semibold">
+                      {displayedRole}
+                    </span>
+                  </span>
+                  <span className="ml-1 inline-block h-[1.1em] w-[2px] bg-cyan-400 animate-pulse align-middle" />
+                </div>
+              </div>
+            </>
+          ) : (
+            <>
+              <div className="pr-2">
+                <p className="mb-2 text-sm tracking-[0.35em] bg-linear-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+                  HI THERE,
+                </p>
+                <h1 className="text-[2.75rem] leading-none mb-4 font-black">
+                  I'M SAFEER
+                </h1>
+                <div className="text-lg text-gray-300 whitespace-nowrap">
+                  <span className="text-white">
+                    I'm a{" "}
+                    <span className="bg-linear-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent font-semibold">
+                      {displayedRole}
+                    </span>
+                  </span>
+                  <span className="ml-1 inline-block h-[1.1em] w-[2px] bg-cyan-400 animate-pulse align-middle" />
+                </div>
+              </div>
+              <div className="flex justify-center items-center">
+                <div
+                  className="relative h-52 w-44 profile-blob border-[3px] border-cyan-100 flex items-center justify-center bg-linear-to-br from-cyan-700 to-blue-600/40"
+                  style={{
+                    boxShadow: `
+                        0 0 18px rgba(0,255,255,0.55),
+                        0 0 35px rgba(0,255,255,0.45),
+                        0 0 65px rgba(0,255,255,0.35),
+                        0 0 95px rgba(0,255,255,0.20),
+                        inset 0 0 25px rgba(0,255,255,0.45)
+                         `,
+                  }}
+                >
+                  <img
+                    src={profilePic}
+                    alt="Safeer"
+                    className="absolute inset-x-0 bottom-0 h-[95%] w-full object-cover object-bottom"
+                    style={{
+                      borderRadius: "inherit",
+                      maskImage:
+                        "linear-gradient(to top, black 80%, transparent 100%)",
+                    }}
+                  />
+                </div>
+              </div>
+            </>
+          )}
         </div>
       </Html>
 
