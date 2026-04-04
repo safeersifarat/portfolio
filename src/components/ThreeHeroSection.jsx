@@ -99,7 +99,7 @@ function RetroComputer({ scrollProgress = 0, displayedRole, windowWidth }) {
             <>
               <div className="flex justify-center items-center mb-4">
                 <div
-                  className="relative h-32 w-28 md:w-78 profile-blob border-[2px] border-cyan-100 flex items-center justify-center bg-linear-to-br from-cyan-700 to-blue-600/40"
+                  className="relative h-32 w-28 profile-blob border-[2px] border-cyan-100 flex items-center justify-center bg-linear-to-br from-cyan-700 to-blue-600/40"
                   style={{
                     boxShadow: `
                         0 0 10px rgba(0,255,255,0.55),
@@ -120,7 +120,7 @@ function RetroComputer({ scrollProgress = 0, displayedRole, windowWidth }) {
                   />
                 </div>
               </div>
-              <div className="text-center">
+              <div className="text-center w-full px-6 md:px-12">
                 <p className="mb-1 text-[0.65rem] tracking-[0.35em] bg-linear-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
                   HI THERE,
                 </p>
