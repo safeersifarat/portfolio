@@ -125,10 +125,10 @@ function RetroComputer({ scrollProgress = 0, displayedRole, windowWidth }) {
                   <p className="mb-1 text-[1rem] tracking-[0.35em] bg-linear-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
                     HI THERE,
                   </p>
-                  <h1 className="text-[2.2rem] leading-none mb-2 font-black">
+                  <h1 className="text-[2rem] leading-none mb-2 font-black">
                     I'M SAFEER
                   </h1>
-                  <div className="text-sm text-gray-300 w-full">
+                  <div className="text-base text-gray-300 w-full">
                     <span className="text-white">
                       I'm a{" "}
                       <span className="bg-linear-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent font-semibold">
