@@ -120,7 +120,7 @@ function RetroComputer({ scrollProgress = 0, displayedRole, windowWidth }) {
                   />
                 </div>
               </div>
-              <div className="scale-x-275 -translate-y-2">
+              <div className="scale-x-275">
                 <div className="text-center">
                   <p className="mb-4 text-[1rem] tracking-[0.35em] bg-linear-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
                     HI THERE,
