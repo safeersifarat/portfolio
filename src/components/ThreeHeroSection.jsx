@@ -99,7 +99,7 @@ function RetroComputer({ scrollProgress = 0, displayedRole, windowWidth }) {
             <>
               <div className="flex justify-center items-center mb-4">
                 <div
-                  className="relative h-32 w-28 md:w-28 scale-x-350 -translate-y-7 md:translate-y-0 md:scale-x-100 profile-blob border-[2px] border-cyan-100 flex items-center justify-center bg-linear-to-br from-cyan-700 to-blue-600/40"
+                  className="relative h-32 w-28 scale-x-350 -translate-y-7 md:translate-y-0 md:scale-x-100 profile-blob border-[2px] border-cyan-100 flex items-center justify-center bg-linear-to-br from-cyan-700 to-blue-600/40"
                   style={{
                     boxShadow: `
                         0 0 10px rgba(0,255,255,0.55),
@@ -120,9 +120,9 @@ function RetroComputer({ scrollProgress = 0, displayedRole, windowWidth }) {
                   />
                 </div>
               </div>
-              <div className="scale-x-275 md:scale-x-100 -translate-y-2">
+              <div className="scale-x-275 -translate-y-2">
                 <div className="text-center">
-                  <p className="mb-1 text-[0.65rem] tracking-[0.35em] bg-linear-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+                  <p className="mb-1 text-[1rem] tracking-[0.35em] bg-linear-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
                     HI THERE,
                   </p>
                   <h1 className="text-[2.2rem] leading-none mb-2 font-black">
