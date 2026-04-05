@@ -98,7 +98,7 @@ function RetroComputer({ scrollProgress = 0, displayedRole, windowWidth }) {
           {isPhone ? (
             <>
               <div className="flex justify-center items-center mb-4">
-                <div className="relative h-32 w-28 scale-x-350  border-white flex items-center justify-center">
+                <div className="relative h-32 w-32 scale-x-350  border-white flex items-center justify-center">
                   <img
                     src={profilePic}
                     alt="Safeer"
