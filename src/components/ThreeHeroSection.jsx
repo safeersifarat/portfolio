@@ -2,7 +2,7 @@ import React, { useRef, useMemo, useEffect, useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Html, PerspectiveCamera } from "@react-three/drei";
 import * as THREE from "three";
-import profilePic from "../assets/safeerheadshot.png";
+import profilePic from "../assets/plogo.png";
 
 function RetroComputer({ scrollProgress = 0, displayedRole, windowWidth }) {
   const groupRef = useRef();
@@ -98,20 +98,11 @@ function RetroComputer({ scrollProgress = 0, displayedRole, windowWidth }) {
           {isPhone ? (
             <>
               <div className="flex justify-center items-center mb-4">
-                <div
-                  className="relative h-32 w-28 scale-x-350 profile-blob border-[2px] border-cyan-100 flex items-center justify-center bg-linear-to-br from-cyan-700 to-blue-600/40"
-                  style={{
-                    boxShadow: `
-                        0 0 10px rgba(0,255,255,0.55),
-                        0 0 20px rgba(0,255,255,0.45),
-                        inset 0 0 15px rgba(0,255,255,0.45)
-                         `,
-                  }}
-                >
+                <div className="relative h-32 w-28 scale-x-350  border-white flex items-center justify-center">
                   <img
                     src={profilePic}
                     alt="Safeer"
-                    className="absolute inset-x-0 bottom-0 h-[95%] w-full object-cover object-bottom"
+                    className="absolute inset-x-0 bottom-0 h-[95%] w-full object-cover object-bottom mix-blend-screen"
                     style={{
                       borderRadius: "inherit",
                       maskImage:
@@ -160,18 +151,7 @@ function RetroComputer({ scrollProgress = 0, displayedRole, windowWidth }) {
                 </div>
               </div>
               <div className="flex justify-center items-center">
-                <div
-                  className="relative h-52 w-44 profile-blob border-[3px] border-cyan-100 flex items-center justify-center bg-linear-to-br from-cyan-700 to-blue-600/40"
-                  style={{
-                    boxShadow: `
-                        0 0 18px rgba(0,255,255,0.55),
-                        0 0 35px rgba(0,255,255,0.45),
-                        0 0 65px rgba(0,255,255,0.35),
-                        0 0 95px rgba(0,255,255,0.20),
-                        inset 0 0 25px rgba(0,255,255,0.45)
-                         `,
-                  }}
-                >
+                <div className="relative h-55 w-55  border-white flex items-center justify-center -translate-y-10">
                   <img
                     src={profilePic}
                     alt="Safeer"
