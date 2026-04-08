@@ -100,7 +100,7 @@ function RetroComputer({ scrollProgress = 0, displayedRole, windowWidth }) {
           {isPhone ? (
             <>
               <div className="flex justify-center items-center mb-6">
-                <div className="h-[3.7rem] w-[3.7rem] rounded-full p-[2px] bg-gradient-to-br from-white/30 to-white/10 shadow-xl">
+                <div className="h-[8.74rem] w-[8.74rem] rounded-full overflow-hidden border border-white/20 shadow-lg">
                   <div className="h-full w-full rounded-full overflow-hidden bg-black">
                     <img
                       src={profilePic}
