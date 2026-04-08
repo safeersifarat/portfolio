@@ -3,6 +3,7 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import { Html, PerspectiveCamera } from "@react-three/drei";
 import * as THREE from "three";
 import profilePic from "../assets/dp.png";
+import profilePic1 from "../assets/dp1.png";
 
 function RetroComputer({ scrollProgress = 0, displayedRole, windowWidth }) {
   const groupRef = useRef();
@@ -101,7 +102,7 @@ function RetroComputer({ scrollProgress = 0, displayedRole, windowWidth }) {
               <div className="flex justify-center items-center mb-6">
                 <div className="h-32 w-32 rounded-full overflow-hidden border border-white/20 shadow-lg">
                   <img
-                    src={profilePic}
+                    src={profilePic1}
                     alt="Safeer"
                     className="h-full w-full object-cover"
                   />
