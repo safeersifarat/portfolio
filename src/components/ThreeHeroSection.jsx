@@ -100,17 +100,19 @@ function RetroComputer({ scrollProgress = 0, displayedRole, windowWidth }) {
           {isPhone ? (
             <>
               <div className="flex justify-center items-center mb-6">
-                <div className="h-[8.74rem] w-[8.74rem] rounded-full overflow-hidden border border-white/20 shadow-lg">
-                  <div className="h-full w-full rounded-full overflow-hidden bg-black">
-                    <img
-                      src={profilePic}
-                      alt="Safeer"
-                      className="h-full w-full object-cover"
-                    />
+                <div className="scale-x-150">
+                  <div className="h-[8.74rem] w-[8.74rem] rounded-full overflow-hidden border border-white/20 shadow-lg">
+                    <div className="h-full w-full rounded-full overflow-hidden bg-black">
+                      <img
+                        src={profilePic}
+                        alt="Safeer"
+                        className="h-full w-full object-cover"
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
-              <div>
+              <div className="scale-x-275">
                 <div className="text-center">
                   <p className="mb-4 text-[1rem] tracking-[0.35em] bg-linear-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
                     HI THERE,
