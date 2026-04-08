@@ -335,6 +335,7 @@ export default function ThreeHeroSection() {
       const max = window.innerHeight * 1.5;
       const value = Math.min(window.scrollY / max, 1);
       setProgress(value);
+
       const isMobile = window.innerWidth < 768;
       const fadeStart = isMobile ? 0.4 : 0.5;
       const fadeEnd = isMobile ? 0.7 : 0.8;
@@ -385,7 +386,6 @@ export default function ThreeHeroSection() {
 
     return () => clearTimeout(timer);
   }, [displayedRole, isDeleting, roleIndex, roles]);
-  const phoneScale = 1 + progress * 1.2;
 
   return (
     <section ref={sectionRef} id="home" className="relative h-screen">
@@ -407,7 +407,7 @@ export default function ThreeHeroSection() {
           <group
             scale={
               windowWidth < 480
-                ? phoneScale
+                ? [0.9, 2.7, 1]
                 : windowWidth < 768
                   ? [1, 1.6, 1]
                   : [1, 1, 1]
