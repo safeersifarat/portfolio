@@ -2,7 +2,7 @@ import React, { useRef, useMemo, useEffect, useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Html, PerspectiveCamera } from "@react-three/drei";
 import * as THREE from "three";
-import profilePic from "../assets/plogo.png";
+import profilePic from "../assets/dp.png";
 
 function RetroComputer({ scrollProgress = 0, displayedRole, windowWidth }) {
   const groupRef = useRef();
@@ -88,26 +88,22 @@ function RetroComputer({ scrollProgress = 0, displayedRole, windowWidth }) {
       {/* Screen HTML overlay */}
       <Html transform position={[0, 0.55, 0.17]} distanceFactor={1.5}>
         <div
-          className={`bg-black text-white px-8 ${
-            isPhone
-              ? "w-[560px] h-[340px] flex flex-col justify-center items-center"
-              : "w-[560px] h-[340px] grid grid-cols-[1.5fr_1fr] items-center"
-          }`}
+          className={`bg-linear-to-br from-[rgb(18,18,18)] via-[rgb(35,45,65)] via-20% to-[rgb(24,24,24)]
+              text-white px-8 ${
+                isPhone
+                  ? "w-[560px] h-[340px] flex flex-col justify-center items-center"
+                  : "w-[560px] h-[340px] grid grid-cols-[1.5fr_1fr] items-center"
+              }`}
           style={{ boxShadow: "inset 0 0 20px rgba(0,255,255,0.15)" }}
         >
           {isPhone ? (
             <>
-              <div className="flex justify-center items-center mb-4">
-                <div className="relative h-32 w-32 scale-x-375  border-white flex items-center justify-center -translate-y-3">
+              <div className="flex justify-center items-center mb-6">
+                <div className="h-32 w-32 rounded-full overflow-hidden border border-white/20 shadow-lg">
                   <img
                     src={profilePic}
                     alt="Safeer"
-                    className="absolute inset-x-0 bottom-0 h-[95%] w-full object-cover object-bottom mix-blend-screen"
-                    style={{
-                      borderRadius: "inherit",
-                      maskImage:
-                        "linear-gradient(to top, black 80%, transparent 100%)",
-                    }}
+                    className="h-full w-full object-cover"
                   />
                 </div>
               </div>
@@ -151,15 +147,15 @@ function RetroComputer({ scrollProgress = 0, displayedRole, windowWidth }) {
                 </div>
               </div>
               <div className="flex justify-center items-center">
-                <div className="relative h-55 w-55  border-white flex items-center justify-center -translate-y-10">
+                <div className="relative h-60 w-55  border-white flex items-center justify-center -translate-y-5">
                   <img
                     src={profilePic}
                     alt="Safeer"
-                    className="absolute inset-x-0 bottom-0 h-[95%] w-full object-cover object-bottom"
+                    className="absolute inset-x-0 bottom-0 h-full w-full object-cover object-bottom"
                     style={{
                       borderRadius: "inherit",
                       maskImage:
-                        "linear-gradient(to top, black 80%, transparent 100%)",
+                        "linear-gradient(to top, black 85%, transparent 100%)",
                     }}
                   />
                 </div>
