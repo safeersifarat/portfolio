@@ -407,7 +407,7 @@ export default function ThreeHeroSection() {
           <group
             scale={
               windowWidth < 480
-                ? [2.7, 2.7, 1]
+                ? [0.9, 2.7, 1]
                 : windowWidth < 768
                   ? [1, 1.6, 1]
                   : [1, 1, 1]
