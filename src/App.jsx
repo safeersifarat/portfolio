@@ -64,6 +64,7 @@ export default function PortfolioApp() {
       github: "https://github.com/safeersifarat/dvoting",
       desc: "Dvoting is a decentralized blockchain-based voting system built on Ethereum that enables secure, transparent, and tamper-proof online elections. It allows admins to create and manage elections, verify voters, and publish real-time results, while voters can securely register and cast their votes through the blockchain, ensuring one-person-one-vote integrity and transparency.",
       tech: ["React", "Solidity", "Ganache", "MetaMask"],
+      demoVideo: "https://www.youtube.com/embed/VLOFxuG5I3s",
     },
   ];
 
@@ -228,7 +229,7 @@ export default function PortfolioApp() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true, margin: "-100px" }}
-              className="flex flex-col gap-6 md:gap-8 rounded-4xl md:rounded-[2.5rem] border border-white/10 bg-white/5 p-6 md:p-12 shadow-2xl backdrop-blur-xl"
+              className="flex flex-col gap-6 md:gap-8 rounded-4xl md:rounded-[2.5rem] border border-white/10 bg-linear-to-br from-white/10 via-white/5 to-transparent p-6 md:p-12 shadow-[0_8px_32px_0_rgba(31,38,135,0.3)]"
             >
               <div className="flex flex-col gap-5 md:gap-6">
                 <div className="flex flex-col md:flex-row md:items-start justify-between gap-4 md:gap-6">
@@ -276,15 +277,11 @@ export default function PortfolioApp() {
 
               {/* Demo Video Section */}
               <div className="w-full aspect-video rounded-3xl border border-white/10 bg-linear-to-br from-black/60 to-purple-900/20 flex flex-col items-center justify-center shadow-inner overflow-hidden relative group">
-                <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors"></div>
-                <div className="relative z-10 flex flex-col items-center gap-4 opacity-50">
-                  <div className="w-16 h-16 rounded-full border-2 border-white/30 flex items-center justify-center backdrop-blur-sm">
-                    <div className="w-0 h-0 border-t-8 border-t-transparent border-l-12 border-l-white border-b-8 border-b-transparent ml-1"></div>
-                  </div>
-                  <span className="text-sm md:text-lg font-medium tracking-widest uppercase text-center px-4">
-                    Video Demo Coming Soon
-                  </span>
-                </div>
+                <iframe
+                  src={project.demoVideo}
+                  className="w-full h-full"
+                  allowFullScreen
+                />
               </div>
             </motion.div>
           ))}

@@ -393,7 +393,7 @@ export default function ThreeHeroSection() {
         className="fixed top-0 left-0 h-screen w-full z-0"
         style={{ opacity, pointerEvents: opacity < 0.1 ? "none" : "auto" }}
       >
-        <Canvas>
+        <Canvas frameloop={opacity < 0.1 ? 'demand' : 'always'}>
           <PerspectiveCamera
             makeDefault
             position={getCameraPosition()}
