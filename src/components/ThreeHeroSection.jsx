@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unknown-property */
 import React, { useRef, useMemo, useEffect, useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Html, PerspectiveCamera } from "@react-three/drei";
@@ -7,7 +8,6 @@ import profilePic1 from "../assets/dp11.png";
 
 function RetroComputer({ scrollProgress = 0, displayedRole, windowWidth }) {
   const groupRef = useRef();
-  const isTablet = windowWidth >= 480 && windowWidth < 768;
   const isPhone = windowWidth < 480;
 
   useFrame(() => {

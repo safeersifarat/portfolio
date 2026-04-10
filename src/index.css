@@ -62,18 +62,18 @@
 }
 @layer components {
   .glass-card {
-    @apply relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.03] backdrop-blur-2xl transition-all duration-500;
+    @apply relative overflow-hidden rounded-4xl border border-white/10 bg-white/3 backdrop-blur-2xl transition-all duration-500;
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
   }
   .glass-card::before {
     content: "";
-    @apply absolute inset-0 -z-10 bg-gradient-to-br from-white/[0.08] to-transparent pointer-events-none opacity-0 transition-opacity duration-500;
+    @apply absolute inset-0 -z-10 bg-linear-to-br from-white/8 to-transparent pointer-events-none opacity-0 transition-opacity duration-500;
   }
   .glass-card:hover::before {
     @apply opacity-100;
   } /* Inner highlight for glossy effect */
   .glass-highlight {
-    @apply pointer-events-none absolute inset-0 rounded-[2rem] border border-white/20;
+    @apply pointer-events-none absolute inset-0 rounded-4xl border border-white/20;
     mask-image: linear-gradient(
       135deg,
       black,
@@ -126,11 +126,11 @@
     @apply absolute pointer-events-none rounded-full blur-[120px] opacity-30;
   }
   .gaming-tower {
-    @apply relative rounded-2xl border border-white/5 bg-gradient-to-b from-white/10 to-transparent backdrop-blur-2xl;
+    @apply relative rounded-2xl border border-white/5 bg-linear-to-b from-white/10 to-transparent backdrop-blur-2xl;
     animation: rgb-pulse 5s ease-in-out infinite;
   }
   .monitor-frame {
-    @apply relative rounded-[2.5rem] border-[12px] border-slate-900 bg-slate-950 shadow-2xl;
+    @apply relative rounded-[2.5rem] border-12 border-slate-900 bg-slate-950 shadow-2xl;
     box-shadow:
       0 0 50px rgba(0, 0, 0, 0.5),
       inset 0 0 20px rgba(255, 255, 255, 0.05);

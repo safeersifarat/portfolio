@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+// eslint-disable-next-line no-unused-vars
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Home, User, Briefcase, Mail } from "lucide-react";
 import ThreeHeroSection from "./components/ThreeHeroSection";
@@ -220,14 +221,14 @@ export default function PortfolioApp() {
           <h2 className="mb-2 md:mb-4 text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-center">
             Projects
           </h2>
-          {projects.map((project, index) => (
+          {projects.map((project) => (
             <motion.div
               key={project.title}
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true, margin: "-100px" }}
-              className="flex flex-col gap-6 md:gap-8 rounded-[2rem] md:rounded-[2.5rem] border border-white/10 bg-white/5 p-6 md:p-12 shadow-2xl backdrop-blur-xl"
+              className="flex flex-col gap-6 md:gap-8 rounded-4xl md:rounded-[2.5rem] border border-white/10 bg-white/5 p-6 md:p-12 shadow-2xl backdrop-blur-xl"
             >
               <div className="flex flex-col gap-5 md:gap-6">
                 <div className="flex flex-col md:flex-row md:items-start justify-between gap-4 md:gap-6">
@@ -298,7 +299,7 @@ export default function PortfolioApp() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="rounded-[2rem] md:rounded-[2.5rem] border border-white/10 bg-white/5 p-6 md:p-12 shadow-2xl backdrop-blur-xl flex flex-col items-center text-center"
+            className="rounded-4xl md:rounded-[2.5rem] border border-white/10 bg-white/5 p-6 md:p-12 shadow-2xl backdrop-blur-xl flex flex-col items-center text-center"
           >
             <h2 className="mb-3 md:mb-4 text-3xl md:text-4xl font-bold text-center">
               <span className="permanent-marker-regular inline-block">
