@@ -4,7 +4,7 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import { Html, PerspectiveCamera } from "@react-three/drei";
 import * as THREE from "three";
 import profilePic from "../assets/dp.png";
-import profilePic1 from "../assets/dp11.png";
+import profilePic1 from "../assets/picture5.png";
 
 function RetroComputer({ scrollProgress = 0, displayedRole, windowWidth }) {
   const groupRef = useRef();
