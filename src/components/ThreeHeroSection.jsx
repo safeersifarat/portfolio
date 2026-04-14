@@ -152,7 +152,7 @@ function RetroComputer({ scrollProgress = 0, displayedRole, windowWidth }) {
                 </div>
               </div>
               <div className="flex justify-center items-center">
-                <div className="relative h-60 w-55  border-white flex items-center justify-center -translate-y-5">
+                <div className="relative h-80 w-60  border-white flex items-center justify-center">
                   <img
                     src={profilePic}
                     alt="Safeer"
@@ -160,7 +160,7 @@ function RetroComputer({ scrollProgress = 0, displayedRole, windowWidth }) {
                     style={{
                       borderRadius: "inherit",
                       maskImage:
-                        "linear-gradient(to top, black 85%, transparent 100%)",
+                        "linear-gradient(to top, black 100%, transparent 100%)",
                     }}
                   />
                 </div>
@@ -393,7 +393,7 @@ export default function ThreeHeroSection() {
         className="fixed top-0 left-0 h-screen w-full z-0"
         style={{ opacity, pointerEvents: opacity < 0.1 ? "none" : "auto" }}
       >
-        <Canvas frameloop={opacity < 0.1 ? 'demand' : 'always'}>
+        <Canvas frameloop={opacity < 0.1 ? "demand" : "always"}>
           <PerspectiveCamera
             makeDefault
             position={getCameraPosition()}
